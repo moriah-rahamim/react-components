@@ -1,16 +1,20 @@
-var AlmondButter = () => (
-  <li>Almond Butter</li>
+// create one list item based on props.item
+var GroceryListItem = (props) => (
+  <li>{props.item}</li>
 );
 
-var Apples = () => (
-  <li>3 Granny Smith Apples, 3 Fuji Apples</li>
-);
-
-var GroceryList = () => (
+// so far need to hard-code number of items; how to update dynamically
+// based on length of array inputted?
+var GroceryList = (props) => (
   <ul>
-    <AlmondButter />
-    <Apples />
+    <GroceryListItem item={props.items[0]}/>
+    <GroceryListItem item={props.items[1]}/>
+    <GroceryListItem item={props.items[2]}/>
   </ul>
 );
 
-ReactDOM.render(<GroceryList />, document.getElementById('app'));
+// Grocery items to add to list
+let items = ['Almond Butter', '3 Granny Smith Apples', '3 Fuji Apples'];
+
+// Render the GroceryList using our array of items
+ReactDOM.render(<GroceryList items={items}/>, document.getElementById('app'));
