@@ -3,12 +3,27 @@
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      bold: false
+    };
+  }
+
+  onGroceryListItemHover() {
+    console.log('hovering');
+    this.setState({
+      bold: !this.state.bold
+    });
   }
 
   // create one list item based on props.item
   render() {
+    var style = {
+      fontWeight: this.state.bold ? 'bold' : 'normal'
+    };
+
     return (
-      <li>{this.props.item}</li>
+      <li style={style} onMouseEnter={this.onGroceryListItemHover.bind(this)} onMouseLeave={this.onGroceryListItemHover.bind(this)}>{this.props.item}</li>
     );
   }
 }
